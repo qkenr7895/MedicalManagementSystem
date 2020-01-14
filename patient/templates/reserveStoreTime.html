@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        {% if prescription %}
+        <form action="{% url 'patient:reservingStore' p.id %}" method="POST">
+            {% csrf_token %}
+            예약날짜를 정해주세요            	
+            <input type="date" name='date' required />
+            <br>
+            예약시간을 정해주세요
+            <input type="time" name="time" required /> 
+            <input type='hidden' name='p_id' value='{{p.id}}' />
+            <input type='hidden' name='s_id' value='{{s.id}}' />
+            <br>
+            ============================================<br>
+            처방받을 처방전을 선택해주세요
+            <br>
+            {% for pst in prescription %}
+            <input type='radio' name='prescription' value='{{pst.id}}' required />{{pst.p_hospital.h_name}}, {{pst.p_date}}, {{pst.p_time}}<br>
+            {% endfor %}
+            =============================================<br>
+            <input type="submit" name='예약하기' value='예약하기' />
+        </form>
+
+        {% else %}
+            처방전이 없습니다
+        {% endif %}
+            <br>
+            <a href="{% url 'patient:usermain' p.id %}">메뉴로</a>
+    </body>
+</html>

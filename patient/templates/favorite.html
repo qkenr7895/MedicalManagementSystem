@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        {% if f %}
+        <ol>
+        {% for fh in f %}
+            <li>
+            이름 : {{fh.f_hospital.h_name}}<br>
+            주소 : {{fh.f_hospital.h_address}}
+            <form action="{% url 'patient:deleteFavorite' %}" method="POST">
+                    {% csrf_token %}
+                <input type='hidden' name='p_id' value='{{p.id}}' />
+                <input type='hidden' name='f_id' value='{{fh.id}}' />
+                <input type='submit' name='삭제' value = '삭제' />
+            </form>
+            </li>
+        {% endfor %}
+        </ol>
+        {% else %}
+        즐겨찾기된 병원이 없습니다
+        {% endif %}
+        <br>
+        <a href="{% url 'patient:usermain' p.id %}">메뉴로</a>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        {% if rs %}       
+            {% for r in rs %}
+            ==========================================================================<br>   
+                이름 : {{r.r_store.s_name}}, 주소 : {{r.r_store.s_address}}
+                <br>
+                날짜 : {{r.r_date}}, 시간 : {{r.r_time}}
+                <br>
+                상태 : {{r.r_type}}
+                <form action="{% url 'patient:reserveListStore' p.id %}" method="POST">
+                    {% csrf_token %}
+                    <input type='hidden' name='r_id' value='{{r.id}}' />
+                    <input type='submit' name='예약취소' value='예약취소' />
+                </form>
+            {% endfor %}
+    
+        {% else %}
+            예약된 상점이 없습니다.
+        {% endif %}        
+        <br>
+        <a href="{% url 'patient:usermain' p.id %}">메뉴로</a>
+    </body>
+</html>

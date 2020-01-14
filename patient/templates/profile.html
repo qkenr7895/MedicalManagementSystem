@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        아이디 : {{p.p_account.a_local}}@{{p.p_account.a_domain}}<br>
+        이름 : {{p.p_name}}<br>
+        전화번호 : {{p.p_phone}}<br>
+        위도 : {{p.p_latitude}}<br>
+        경도 : {{p.p_longitude}}<br>
+        
+        <a href="{% url 'patient:usermain' p.id %}">메뉴로</a>
+    </body>
+</html>

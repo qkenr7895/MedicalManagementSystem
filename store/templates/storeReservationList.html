@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        {% if rs %}       
+            {% for r in rs %}
+            ==========================================================================<br>   
+                이름 : {{r.r_patient.p_name}}, 전화번호 : {{r.r_patient.p_phone}}
+                <br>
+                날짜 : {{r.r_date}}, 시간 : {{r.r_time}}
+                <form action="{% url 'store:storeReservationList' s.id %}" method="POST">
+                    {% csrf_token %}
+                    <input type='hidden' name='r_id' value='{{r.id}}' />
+                    <input type='submit' name='처방전보기' value='처방전보기' />
+                </form>
+
+                <form action="{% url 'store:deleteReserve' s.id %}" method="POST">
+                    {% csrf_token %}
+                    <input type='hidden' name='r_id' value='{{r.id}}' />
+                    <input type='submit' name='삭제' value='삭제' />
+                </form>
+            {% endfor %}
+    
+        {% else %}
+            예약환자가 없습니다.
+        {% endif %}        
+        <br>
+        <a href="{% url 'store:storemain' s.id %}">메뉴로</a>
+    </body>
+</html>

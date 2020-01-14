@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta http-equiv="content-Type" content="text/html"; charset=UTF-8>
+		<title>Title</title>
+	</head>
+
+	<body>
+		{% if ss %}
+		<ol>
+			{% for s in ss %}
+			<li>
+				이름 : {{s.yadmNm}}, 주소 : {{s.addr}}
+				<form action="{% url 'account:storeSignup' a.id %}" method="POST">
+					{% csrf_token %}
+					<input type="hidden" name='name' value='{{s.yadmNm}}' />
+                    <input type="hidden" name='lat' value='{{s.YPos}}' />
+                    <input type="hidden" name='lng' value='{{s.XPos}}' />
+					<input type="hidden" name='addr' value='{{s.addr}}' />
+					<input type="hidden" name='type' value='약국' />
+                    <input type="submit" name='선택' value='선택' />
+                </form>	
+			</li>
+			{% endfor %}
+		</ol>
+		{% endif %}
+
+		{% if sq %}
+		<ol>
+			{% for q in sq %}
+			<li>
+				이름 : {{q.s_name}}, 주소 : {{q.s_address}}
+				<form action="{% url 'account:storeSignup' a.id %}" method="POST">
+					{% csrf_token %}
+					<input type="hidden" name='name' value='{{q.s_name}}' />
+                    <input type="hidden" name='lat' value='{{q.s_latitude}}' />
+                    <input type="hidden" name='lng' value='{{q.s_longitude}}' />
+					<input type="hidden" name='addr' value='{{q.s_address}}' />
+					<input type="hidden" name='type' value='{{q.s_type}}' />
+                    <input type="submit" name='선택' value='선택' />
+                </form>	
+			</li>
+			{% endfor %}
+		</ol>
+		{% endif %}
+
+		</br>
+		<a href="{% url 'account:storeSearch' a.id %}">재검색</a>	
+	</body>
+</html>

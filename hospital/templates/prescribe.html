@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        <form action="{% url 'hospital:prescribe' h.id %}" method="POST">
+            {% csrf_token %}
+            {% if p %}
+            <input type='hidden' name='local' value='{{p.p_account.a_local}}' />
+            <input type='hidden' name='domain' value='{{p.p_account.a_domain}}' />
+            <input type='hidden' name='name' value='{{p.p_name}}' />
+            <input type='hidden' name='phone' value='{{p.p_phone}}' />
+            {% else %}
+            환자 명세<br>
+            ID : <input type='text' name='local' />@<input type='text' name='domain' />
+            <br>
+            이름 : <input type='text' name='name' required />
+            <br>
+            휴대폰번호 : <input type='text' name='phone' pattern="^\d{11}" required />
+            <br>
+            비회원 환자의 경우 ID는 비워둔다
+            <br>
+            {% endif %}
+            ======================================================<br>
+            의약품 처방
+            <br>
+            <br>
+            처방 의약품1<br>
+            의약품 명 : <input type='text' name='11' value='none' required /><br>
+            1회 투약량 : <input type='text' name='12' value='none' required /><br>
+            1일 투여횟수 : <input type='text' name='13' value='none' required /><br>
+            총 투약일수 : <input type='text' name='14' value='none' required /><br>
+            <br>
+            처방 의약품2<br>
+            의약품 명 : <input type='text' name='21' value='none' required /><br>
+            1회 투약량 : <input type='text' name='22' value='none' required /><br>
+            1일 투여횟수 : <input type='text' name='23' value='none' required /><br>
+            총 투약일수 : <input type='text' name='24' value='none' required /><br>
+            <br>
+            처방 의약품3<br>
+            의약품 명 : <input type='text' name='31' value='none' required /><br>
+            1회 투약량 : <input type='text' name='32' value='none' required /><br>
+            1일 투여횟수 : <input type='text' name='33' value='none' required /><br>
+            총 투약일수 : <input type='text' name='34' value='none' required /><br>
+            <br>
+            처방 의약품4<br>
+            의약품 명 : <input type='text' name='41' value='none' required /><br>
+            1회 투약량 : <input type='text' name='42' value='none' required /><br>
+            1일 투여횟수 : <input type='text' name='43' value='none' required /><br>
+            총 투약일수 : <input type='text' name='44' value='none' required /><br>
+
+            <input type='submit' name='처방' value='처방' />
+        </form>
+
+    </body>
+</html>

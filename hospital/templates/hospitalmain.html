@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        <a href="{% url 'hospital:reservationList' h.id %}">예약명단 관리</a>
+        <br>
+        <a href="{% url 'hospital:prescribeType' h.id %}">처방하기</a>
+        <br>
+        <a href="{% url 'hospital:filtering' h.id %}">환자 정보와 처방 기록</a>
+        <br>
+        <a href="{% url 'hospital:hospitalProfile' h.id %}">병원정보</a>    
+        <br>
+        <a href="{% url 'hospital:updateHospital' h.id %}">정보수정</a>    
+    </body>
+</html>

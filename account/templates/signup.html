@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        {% if error %}
+            <h3 style="color:red">{{error}}</h3>
+        {% endif %} 
+            <form action="{% url 'account:signup' %}" method="POST">
+                {% csrf_token %}
+                ID : <input type="text" name='local' required />@<input type="text" name='domain' required /></br>
+                PW : <input type="password" name='pw' required /></br>
+                PW_CHECK : <input type="password" name='pwcheck' required /></br>
+                <input type="submit" name='회원가입' value='회원가입' />
+            </form>
+    </body>
+</html>

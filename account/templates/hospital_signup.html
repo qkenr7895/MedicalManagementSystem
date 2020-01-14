@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta http-equiv="content-Type" content="text/html"; charset=UTF-8>
+		<title>Title</title>
+	</head>
+
+	<body>
+		{% if hs %}
+		<ol>
+			{% for h in hs %}
+			<li>
+				이름 : {{h.yadmNm}}, 주소 : {{h.addr}}
+				<form action="{% url 'account:hospital_signup' a.id %}" method="POST">
+					{% csrf_token %}
+					<input type="hidden" name='name' value='{{h.yadmNm}}' />
+					<input type="hidden" name='ykiho' value='{{h.ykiho}}' />
+                    <input type="hidden" name='lat' value='{{h.YPos}}' />
+                    <input type="hidden" name='lng' value='{{h.XPos}}' />
+                    <input type="hidden" name='addr' value='{{h.addr}}' />
+                    <input type="hidden" name='spc' value='{{h.sdrCnt}}' />
+                    <input type="submit" name='선택'/>
+                </form>	
+			</li>
+			{% endfor %}
+		</ol>
+		{% endif %}
+
+		{% if hq %}
+		<ol>
+			{% for h in hq %}
+			<li>
+				이름 : {{h.h_name}}, 주소 : {{h.h_address}}
+				<form action="{% url 'account:hospital_signup' a.id %}" method="POST">
+					{% csrf_token %}
+					<input type="hidden" name='name' value='{{h.h_name}}' />
+					<input type="hidden" name='ykiho' value='{{h.h_key}}' />
+                    <input type="hidden" name='lat' value='{{h.h_latitude}}' />
+                    <input type="hidden" name='lng' value='{{h.h_longitude}}' />
+                    <input type="hidden" name='addr' value='{{h.h_address}}' />
+                    <input type="hidden" name='spc' value='{{h.h_specialCount}}' />
+                    <input type="submit" name='선택'/>
+                </form>	
+			</li>
+			{% endfor %}
+		</ol>
+		{% endif %}
+
+		</br>
+		<a href="{% url 'account:hospital_search' a.id %}">재검색</a>	
+	</body>
+</html>

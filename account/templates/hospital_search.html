@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        {% if error %}
+            <h3 style="color:red">{{error}}</h3>
+        {% endif %} 
+            <form action="{% url 'account:hospital_search' a.id %}" method="POST">
+                {% csrf_token %}
+                병원명 : <input type="text" name='name' minlength=2 required/>
+                위도 : <input type="text" name='latitude' pattern='^[0-9]+(.[0-9]{1,10})?$' required value='37.5585146'/>
+                경도 : <input type="text" name='longitude' pattern='^[0-9]+(.[0-9]{1,10})?$' required value='127.0331892'/>
+                <input type="submit" name='검색'>
+            </form>
+    </body>
+</html>

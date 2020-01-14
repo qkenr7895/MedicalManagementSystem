@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+
+    <body>
+        회원가입 종류
+        <br>
+        {% if a.a_patient %}
+        {% else %}
+            <a href="{% url 'account:patient_signup' a.id %}">환자</a>
+            <br>
+        {% endif %}
+        {% if a.a_hospital %}
+        {% else %}
+            <a href="{% url 'account:hospital_search' a.id %}">병원</a>
+            <br>
+        {% endif %}
+        {% if a.a_store %}
+        {% else %}
+            <a href="{% url 'account:storeSearch' a.id %}">약국</a>
+            <br>
+            <a href="{% url 'account:storeSignupDefault' a.id %}">일반 상점</a>
+            <br>
+        {% endif %}
+        <a href="{% url 'account:signin' %}">로그인 화면으로</a>
+    </body>
+</html>

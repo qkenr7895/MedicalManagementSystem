@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        <h1>처방전</h1>
+        환자 이름 : {{ps.p_name}}<br>
+        발급 병원 : {{ps.p_hospital.h_name}}<br>
+        발급 시간 : {{ps.p_date}}, {{ps.p_time}}<br>
+        고유 번호 : {{ps.id}}<br>
+        ============================================================<br>
+        처방의약품 : {{ps.p_medicine1}}<br>
+        1회 투약량 : {{ps.p_dosage1}}<br>
+        1일 투여횟수 : {{ps.p_dosageCount1}}<br>
+        총 투약일수 : {{ps.p_totalDosage1}}<br>
+        <br>
+        처방의약품 : {{ps.p_medicine2}}<br>
+        1회 투약량 : {{ps.p_dosage2}}<br>
+        1일 투여횟수 : {{ps.p_dosageCount2}}<br>
+        총 투약일수 : {{ps.p_totalDosage2}}<br>
+        <br>
+        처방의약품 : {{ps.p_medicine3}}<br>
+        1회 투약량 : {{ps.p_dosage3}}<br>
+        1일 투여횟수 : {{ps.p_dosageCount3}}<br>
+        총 투약일수 : {{ps.p_totalDosage3}}<br>
+        <br>
+        처방의약품 : {{ps.p_medicine4}}<br>
+        1회 투약량 : {{ps.p_dosage4}}<br>
+        1일 투여횟수 : {{ps.p_dosageCount4}}<br>
+        총 투약일수 : {{ps.p_totalDosage4}}<br>
+        <br>  
+        {% if s.s_type == '약국' %}
+        <form action="{% url 'store:prescribeAvailable' s.id %}" method="POST">
+                {% csrf_token %}
+            <input type='hidden' name='r_id' value='{{r.id}}' />
+            <input type='hidden' name='p_id' value='{{ps.id}}' />
+            <input type='submit' name='처방가능' value='처방가능' />
+        </form>
+        <form action="{% url 'store:prescribeNotAvailable' s.id %}" method="POST">     
+                {% csrf_token %}      
+            <input type='hidden' name='r_id' value='{{r.id}}' />
+            <input type='hidden' name='p_id' value='{{ps.id}}' />
+            <input type='submit' name='처방불가능' value='처방불가능' />
+        </form>
+        {% endif %}
+
+        <a href="{% url 'store:storemain' s.id %}">메뉴로</a>
+    </body> 
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+
+    <body>
+        <form action="{% url 'account:patient_signup' a.id %}" method="POST">
+            {% csrf_token %}
+            이름 : <input type="text" name='name' required />
+            전화번호 : <input type="text" name='phone' pattern="^\d{11}" required /></br>
+            위도 : <input type="text" name='latitude' pattern='^[0-9]+(.[0-9]{1,10})?$' required value='37.5585146' /></br>
+            경도 : <input type="text" name='longitude' pattern='^[0-9]+(.[0-9]{1,10})?$' required value='127.0331892' /></br>
+            <input type="submit" name='등록' value='등록' />
+        </form>
+    </body>
+</html>

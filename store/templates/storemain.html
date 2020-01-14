@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        <a href="{% url 'store:storeReservationList' s.id %}">예약명단</a>
+        <br>
+        {% if s.s_type == '약국' %}
+        <a href="{% url 'store:storePrescribePatient' s.id %}">처방하기</a>
+        <br>
+        <a href="{% url 'store:storefiltering' s.id %}">방문환자명단</a>
+        <br>
+        {% endif %}
+        <a href="{% url 'store:storeprofile' s.id %}">{{s.s_type}} 정보</a>    
+    </body>
+</html>

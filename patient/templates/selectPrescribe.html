@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        {% if ps %}
+            {% for pst in ps %}
+                =================================================<br>
+                병원 : {{pst.p_hospital.h_name}}<br>
+                날짜 : {{pst.p_date}}, 시간 : {{pst.p_time}}
+                <form action="{% url 'patient:seePrescribe' p.id %}" method="POST">
+                    {% csrf_token %}
+                    <input type='hidden' name='ps_id' value='{{pst.id}}' />
+                    <input type='submit' name='처방보기' value='처방보기' />
+                </form>
+            {% endfor %}
+        {% else %}
+            처방전이 없습니다
+        {% endif %}
+            <br>
+            <a href="{% url 'patient:usermain' p.id %}">메뉴로</a>
+    </body>
+</html>

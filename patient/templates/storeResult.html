@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        {% if ss %}
+            {% for s in ss %}
+                ====================================================<br>
+                이름 : {{s.s_name}}, 주소 : {{s.s_address}}<br>
+                {% if s.s_account %}
+                <form action="{% url 'patient:reserveStore' p.id %}" method="POST">
+                {% csrf_token %}
+                    <input type='hidden' name='id' value='{{s.id}}' />
+                    <input type='submit' name='예약하기' value='예약하기' />        
+                </form>
+                {% endif %}            
+            {% endfor %}
+        {% else %}
+        검색 결과가 없습니다
+        {% endif %}
+        <br>
+        <a href="{% url 'patient:storefilter' p.id %}">재검색</a>
+    </body>
+</html>

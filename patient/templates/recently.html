@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        {% if ps %}       
+            이름 : {{ps.p_hospital.h_name}}<br>
+            주소 : {{ps.p_hospital.h_address}}
+        {% else %}
+            최근에 간 병원이 없습니다.
+        {% endif %}        
+        <br>
+        <a href="{% url 'patient:usermain' p.id %}">메뉴로</a>
+    </body>
+</html>

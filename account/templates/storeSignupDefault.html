@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta http-equiv="content-Type" content="text/html"; charset=UTF-8>
+		<title>Title</title>
+	</head>
+
+	<body>
+		<form action="{% url 'account:storeSignupDefault' a.id %}" method="POST">
+			{% csrf_token %}
+			이름 : <input type='text' name='name' required />
+			<br>
+			주소 : <input type='text' name='address' required /> 
+			<br>
+			위도 : <input type='text' name='latitude' pattern='^[0-9]+(.[0-9]{1,10})?$' required /> 
+			<br>
+			경도 : <input type='text' name='longitude' pattern='^[0-9]+(.[0-9]{1,10})?$' required /> 
+			<br>
+			<input type='hidden' name='type' value='일반상점' required /> 
+			<input type='submit' name='회원가입' value='회원가입' />
+		</form>
+	</body>
+</html>

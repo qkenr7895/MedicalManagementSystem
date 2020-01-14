@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        아이디 : {{h.h_account.a_local}}@{{h.h_account.a_domain}}<br>
+        이름 : {{h.h_name}}<br>
+        주소 : {{h.h_address}}<br>
+        위도 : {{h.h_latitude}}<br>
+        경도 : {{h.h_longitude}}<br>
+        전문의 수 : {{h.h_specialCount}}<br>
+
+        진료시간<br>
+        월요일 {{h.h_open1}}~{{h.h_close1}}<br>
+        화요일 {{h.h_open2}}~{{h.h_close2}}<br>
+        수요일 {{h.h_open3}}~{{h.h_close3}}<br>
+        목요일 {{h.h_open4}}~{{h.h_close4}}<br>
+        금요일 {{h.h_open5}}~{{h.h_close5}}<br>
+        토요일 {{h.h_open6}}~{{h.h_close6}}<br>
+        일요일 {{h.h_open7}}~{{h.h_close7}}<br>
+
+
+
+        <a href="{% url 'hospital:hospitalmain' h.id %}">메뉴로</a>
+    </body>
+</html>

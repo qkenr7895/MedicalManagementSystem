@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        {% if rs %}       
+            {% for r in rs %}
+            ==========================================================================<br>   
+                이름 : {{r.r_patient.p_name}}, 전화번호 : {{r.r_patient.p_phone}}
+                <br>
+                날짜 : {{r.r_date}}, 시간 : {{r.r_time}}
+                <form action="{% url 'hospital:reservedPrescribe' h.id %}" method="POST">
+                    {% csrf_token %}
+                    <input type='hidden' name='p_id' value='{{r.r_patient.id}}' />
+                    <input type='hidden' name='r_id' value='{{r.id}}' />
+                    <input type='submit' name='처방' value='처방' />
+                </form>
+            {% endfor %}
+    
+        {% else %}
+            예약환자가 없습니다.
+        {% endif %}        
+        <br>
+        <a href="{% url 'hospital:prescribeType' h.id %}">뒤로</a>
+    </body>
+</html>

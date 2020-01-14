@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        <form action="{% url 'hospital:updateHospital' h.id %}" method="POST">
+            {% csrf_token %}
+            월요일
+            <br>
+            <input type='time' name='open1' value='h.h_open1' required />~<input type='time' name='close1' value='h.h_close1' required />
+            <br>
+            화요일
+            <br>
+            <input type='time' name='open2' value='h.h_open2' required />~<input type='time' name='close2' value='h.h_close2' required />
+            <br>
+            수요일
+            <br>
+            <input type='time' name='open3' value='h.h_open3' required />~<input type='time' name='close3' value='h.h_close3' required />
+            <br>
+            목요일
+            <br>
+            <input type='time' name='open4' value='h.h_open4' required />~<input type='time' name='close4' value='h.h_close4' required />
+            <br>
+            금요일
+            <br>
+            <input type='time' name='open5' value='h.h_open5' required />~<input type='time' name='close5' value='h.h_close5' required />
+            <br>
+            토요일
+            <br>
+            <input type='time' name='open6' value='h.h_open6' required />~<input type='time' name='close6' value='h.h_close6' required />
+            <br>
+            일요일
+            <br>
+            <input type='time' name='open7' value='h.h_open7' required />~<input type='time' name='close7' value='h.h_close7' required />
+            <br>
+
+            <input type='submit' name='업데이트' value='업데이트' />
+        </form>
+    
+        <br>
+        <a href="{% url 'hospital:hospitalmain' h.id %}">메뉴로</a>
+    </body>
+</html>

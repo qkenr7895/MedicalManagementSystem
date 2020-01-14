@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+
+    <body>
+        서비스 종류
+        <br>
+        {% if a.a_patient %}
+            <a href="{% url 'patient:usermain' a.a_patient.id %}">환자</a>
+            <br>
+        {% endif %}
+        {% if a.a_hospital %}
+            <a href="{% url 'hospital:hospitalmain' a.a_hospital.id %}">병원</a>
+            <br>
+        {% endif %}
+        {% if a.a_store %}
+        <a href="{% url 'store:storemain' a.a_store.id %}">{{a.a_store.s_type}}</a>
+            <br>
+        {% endif %}
+        <a href="{% url 'account:signin' %}">로그인 화면으로</a>
+    </body>
+</html>

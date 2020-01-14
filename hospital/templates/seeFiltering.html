@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        {% if ps %}
+            {% for p in ps %}
+            =========================================================<br>
+                환자이름 : {{p.p_name}}<br>
+                환자번호 : {{p.p_phone}}<br>
+                <form action="{% url 'hospital:seePrescribe1' h.id %}" method="POST">
+                    {% csrf_token %}
+                    <input type='hidden' name='p_id' value='{{p.id}}' />
+                    <input type='submit' name='처방보기' value='처방보기' />
+                </form>
+            {% endfor %}
+        {% else %}
+            조건에 맞는 검색 결과가 없습니다.<br>
+        {% endif %}
+        <a href="{% url 'hospital:hospitalmain' h.id %}">메뉴로</a>   
+    </body>
+</html>

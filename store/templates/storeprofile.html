@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        아이디 : {{s.s_account.a_local}}@{{s.s_account.a_domain}}<br>
+        이름 : {{s.s_name}}<br>
+        주소 : {{s.s_address}}<br>
+        위도 : {{s.s_latitude}}<br>
+        경도 : {{s.s_longitude}}<br>
+        종류 : {{s.s_type}}<br>
+        <a href="{% url 'store:storemain' s.id %}">메뉴로</a>
+    </body>
+</html>

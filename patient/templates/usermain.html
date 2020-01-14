@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        <a href="{% url 'patient:searchHospital' p.id %}">병원검색</a>
+        <br>
+        <a href="{% url 'patient:favorite' p.id %}">자주가는 병원</a>
+        <br>
+        <a href="{% url 'patient:recently' p.id %}">최근 간 병원</a>
+        <br>
+        <a href="{% url 'patient:reserveList' p.id %}">예약명단</a>
+        <br>
+        ====================================================================<br>
+        <a href="{% url 'patient:storefilter' p.id %}">상점검색</a>        
+        <br>      
+        <a href="{% url 'patient:reserveListStore' p.id %}">예약명단</a>
+        <br>
+        ====================================================================<br>
+        <a href="{% url 'patient:selectPrescribe' p.id %}">처방전 보기</a>
+        <br>
+        <a href="{% url 'patient:profile' p.id %}">내 정보 보기</a>
+        <br>
+        <a href="{% url 'patient:updateProfile' p.id %}">정보수정</a>
+    
+    </body>
+</html>

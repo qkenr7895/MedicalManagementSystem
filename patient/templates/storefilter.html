@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        <form action="{% url 'patient:storeResult' p.id %}" method="POST">
+            {% csrf_token %}
+            이름 : <input type='text' name='name' required />
+            <br>
+            =====================================================
+            <br>
+            상점 종류 선택
+            <br>
+            <select name="type">
+                <option value="약국">약국</option>
+                <option value="일반상점">일반상점</option>
+            </select>
+                <input type='submit' name='검색' value='검색' />
+        </form>
+        <br>
+        <a href="{% url 'patient:usermain' p.id %}">메뉴로</a>
+    </body>
+</html>
